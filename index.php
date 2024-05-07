@@ -1,5 +1,14 @@
 <?php
 
+$lcCharacters = range('a', 'z');
+$ucCharacters = range('A', 'Z');
+$numbers = range(0, 9);
+$specialCharatcters = range('-','!');
+
+$completePasswordCharacters = [...$lcCharacters, ...$ucCharacters, ...$numbers, ...$specialCharatcters];
+var_dump($completePasswordCharacters);
+
+
 ?>
 
 <!DOCTYPE html>
