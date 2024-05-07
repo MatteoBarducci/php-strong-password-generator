@@ -12,6 +12,11 @@ $password = '';
 
 if(!empty($passwordLength)){
     $password = generatePassword($passwordLength, $completePasswordCharacters);
+
+    session_start();
+    $_SESSION['password'] = $password;
+
+    header('Location: ./success.php');
 };
 
 function generatePassword($length, $characters){
@@ -23,7 +28,6 @@ function generatePassword($length, $characters){
     }
 
     return $password;
-    var_dump($password);
 };
 
 
