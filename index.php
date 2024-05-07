@@ -6,7 +6,25 @@ $numbers = range(0, 9);
 $specialCharatcters = range('-','!');
 
 $completePasswordCharacters = [...$lcCharacters, ...$ucCharacters, ...$numbers, ...$specialCharatcters];
-var_dump($completePasswordCharacters);
+$passwordLength = (isset($_GET['length'])) ? intval($_GET['length']) : '';
+$password = '';
+
+
+if(!empty($passwordLength)){
+    $password = generatePassword($passwordLength, $completePasswordCharacters);
+};
+
+function generatePassword($length, $characters){
+    $password = '';
+
+    for($i = 0; $i < $length; $i++){
+        $randomIndex = rand(0, count($characters) - 1);
+        $password .= $characters[$randomIndex];
+    }
+
+    return $password;
+    var_dump($password);
+};
 
 
 ?>
@@ -35,6 +53,10 @@ var_dump($completePasswordCharacters);
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+        </div>
+
+        <div class="container mt-3">
+            <p> <?php echo empty($password) ? 'Scrivi la lunghezza della password' : 'La tua passowrd è: ' . $password ?> </p>
         </div>
     </main>
     
